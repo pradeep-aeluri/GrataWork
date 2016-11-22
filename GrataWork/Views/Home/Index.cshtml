@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Grata Work Dashboard";
+}
+
+<div style="height:20px;"></div>
+<div ng-app="grataWork" ng-cloak>
+    <div class="row">
+        <div class="msgbox" ng-controller="rechargeCtrl">
+            <div style="float:left; width:50%"><h4>{{AccountDetails.AccountBalance}} hours remaining</h4></div>
+            <span style="float:right;">@Html.ActionLink("Recharge", "Recharge", "Home", new { @class = "btn btn-default" })</span>
+            <span style="float:right;">@Html.ActionLink("Cancel subscription", "CancelSubscription", "Home", new { @class = "btn btn-default" })</span>
+        </div>
+    </div>
+
+    <div style="height:20px;"></div>
+
+    <div class="row" ng-controller="workItemCtrl">
+        <div class="col-md-8">
+            <table datatable="ng" dt-options="gridOptions" dt-column-defs="gridColDefs" class="table table-bordered table-condensed table-hover">
+                <thead>
+                    <tr>
+                        <th>Task</th>
+                        <th>Status</th>
+                        <th>Created</th>
+                        <th>Work Done</th>
+                        <th>Work Remaining</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="i in items">
+                        <td ng-bind="i.Description"></td>
+                        <td ng-bind="i.Status"></td>
+                        <td ng-bind="i.CreatedOn | date:'MM/dd/yyyy'"></td>
+                        <td ng-bind="i.WorkDone"></td>
+                        <td ng-bind="i.WorkRemaining"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-md-4">            
+            @Html.ActionLink("Create Task", "CreateTask", "Home", new { @class = "btn btn-default" })
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Create Work Item";
+}
+<div ng-app="grataWork">
+    <h4>@ViewBag.Title.</h4>
+    <form name="newTaskForm" class="form-horizontal">        
+        <div ng-controller="workItemCtrl">
+            <div ng-show="msg" class="msgbox-small" style="margin-bottom:10px; background-color: firebrick; color: white;">
+               <span>{{msg}}</span>
+            </div>
+            <div ng-show="newItemKey" class="msgbox-small" style="margin-bottom:10px; background-color: lightgreen;">
+                <span>A new item has been created with key '{{newItemKey}}'</span>
+            </div>
+            <p>
+                <span class="col-md-2 control-label">*Title:</span>
+                <input type="text" class="form-control" ng-model="workItem.Title" required />
+            </p>
+            <p>
+                <span class="col-md-2 control-label">*Description:</span>
+                <textarea class="form-control" ng-model="workItem.Description" required></textarea>
+            </p>
+            <p>
+                <span class="col-md-2 control-label">Attachment:</span>
+                <input type="file" class="form-control" id="fileAttachment" ng-model="workItem.Attachment" />
+            </p>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input ng-disabled="isDisabled" type="submit" class="btn btn-default" value="Create" ng-click="CreateNewItem()" />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

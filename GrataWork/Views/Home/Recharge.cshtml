@@ -1,0 +1,77 @@
+﻿@{
+    ViewBag.Title = "Recharge";
+}
+<div ng-app="grataWork">
+    <h4></h4>
+    <form name="rechargeForm" class="form-horizontal">
+        <div class="row" ng-controller="rechargeCtrl" ng-cloak>            
+            <div ng-show="validationMsg">
+                <div class="msgbox-small" style="margin-bottom:10px; background-color: lightgreen;">
+                    {{validationMsg}}
+                </div>
+                @*<span>You are subscribed to '{{AccountDetails.PlanId}}' plan.</span>
+                <span>Your account balance is '{{AccountDetails.AccountBalance + rechargeInput.HoursAdded}}' hours.</span>*@
+            </div>
+
+            <div id="divElements">
+                <div class="col-md-5">
+                    <div class="msgbox-small" style="margin-bottom: 10px;"><b>Recharge your plan</b></div>                    
+                    <p>
+                        You are currently subscribed to '{{AccountDetails.PlanId}}' level and your current balance is {{AccountDetails.AccountBalance}} hours.
+                        Please enter the additional hours you want to purchase at the rate of the current plan.
+                    </p>
+                    <p>
+                        <span class="control-label">Hours:</span>
+                        <input type="number" class="form-control" ng-model="rechargeInput.HoursAdded" />
+                    </p>
+                    <p>
+                        <span class="control-label"><b>Total Amount:</b></span>
+                        <span class="control-label"><b>{{rechargeInput.HoursAdded * GetPlanRate(rechargeInput.PlanId) | currency}}</b></span>
+                    </p>
+                    <div style="background-color:whitesmoke;">
+                        <input type="submit" class="btn btn-default" value="Recharge" name="btnRecharge" ng-click="Recharge()" />
+                        <p style="color: red" ng-bind="rechargeError"></p>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="msgbox-small" style="margin-bottom: 10px;"><b>Change your plan</b></div>
+                    <div>
+                        <div style="margin-bottom: 20px;" ng-hide="isPlan('premium')">
+                            <input type="radio" value="premium" name="levels" ng-model="newPlanId" /> <b>Premium</b>
+                            <p style="margin-top: 10px; margin-left: 15px;">This plan provides you 80 development hours a month,<br /> billed at $100 per hour.</p>
+                        </div>
+                        <div style="margin-bottom: 20px;" ng-hide="isPlan('standard')">
+                            <input type="radio" value="standard" name="levels" ng-model="newPlanId" /> <b>Standard</b>
+                            <p style="margin-top: 10px; margin-left: 15px;">This plan provides you 40 development hours a month,<br /> billed at $110 per hour.</p>
+                        </div>
+                        <div style="margin-bottom: 20px;" ng-hide="isPlan('small')">
+                            <input type="radio" value="small" name="levels" ng-model="newPlanId" /> <b>Small</b>
+                            <p style="margin-top: 10px; margin-left: 15px;">This plan provides you 20 development hours a month,<br /> billed at $120 per hour.</p>
+                        </div>
+                        <div style="background-color:whitesmoke;">
+                            <input type="submit" class="btn btn-default" value="Change plan" name="btnChangePlan" ng-click="ChangePlan()" />
+                            <span style="font-size: 8pt"><i>Changes will be effective starting next month</i></span>
+                            <p style="color: red" ng-bind="changePlanError"></p>
+                        </div>
+                    </div>
+                </div>
+                @*<div class="form-group">
+                    <div class="col-md-9" style="margin:30px; text-align:right; background-color:whitesmoke;">
+                        <input type="submit" class="btn btn-default" value="Submit" name="btnPay" ng-click="ValidateAndRecharge()" />
+                        <span style="color: red" ng-bind="paymentError"></span>
+                    </div>
+                </div>*@
+                @*<div id="divWarning" ng-show="newPlanId" class="col-md-9" style="background-color:lightyellow; margin-bottom: 20px;">
+                    <span>Your new account balance will be {{AccountDetails.AccountBalance + rechargeInput.HoursAdded}} hours. By moving to a {{newPlanId}} plan, you will be able to save money.</span><br />
+                    <span>With {{AccountDetails.PlanId}} plan, your recharge costs you: {{cur_plan_recharge_amt | currency}} </span><br />
+                    <span>With {{newPlanId}} plan, your recharge costs you: {{new_plan_recharge_amt | currency}}</span>
+
+                    <div>
+                        <span><input type="submit" class="btn btn-default" value="Change to new plan" name="btnNewPlan" ng-click="ChangePlanAndRecharge(newPlanId)" /></span>
+                        <span><input type="submit" class="btn btn-default" value="Continue with existing plan" name="btnCurrentPlan" ng-click="Recharge()" /></span>
+                    </div>
+                </div>*@
+            </div>            
+        </div>
+    </form>
+</div>

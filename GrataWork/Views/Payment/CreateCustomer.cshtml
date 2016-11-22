@@ -1,0 +1,98 @@
+﻿@{
+    ViewBag.Title = "Payment details";
+}
+<div ng-app="grataWork">
+    <h5>Please provide your payment details to complete the registration.</h5>
+    <form name="createAccountForm" class="form-horizontal">
+        <div class="row" ng-controller="rechargeCtrl">
+            <div class="col-md-4"">
+                <div class="msgbox-small" style="margin-bottom: 10px;"><b>Subscription</b></div>
+                <p>
+                    <span class="col-md-2 control-label">Level:</span>
+                    <select name="sel_level" class="form-control" ng-model="rechargeInput.PlanId" required>
+                        <option value="premium">Premium</option>
+                        <option value="standard">Standard</option>
+                        <option value="small">Small</option>
+                    </select>
+                </p>
+            </div>
+            <div class="col-md-5">
+                <div class="msgbox-small" style="margin-bottom: 10px;"><b>Payment Details</b></div>
+                <p>
+                    <span class="control-label">*Card Holder Name:</span>
+                    <input type="text" class="form-control" ng-model="cardDetails.CardHolder" required />
+                </p>
+                <div>
+                    <label style="float:left; margin-right:10px">
+                        <span class="control-label">*Card Number:</span>
+                        <input type="text" class="form-control" ng-model="cardDetails.CardNumber" required />
+                    </label>
+                    <label>
+                        <span class="control-label">*CVV:</span>
+                        <input type="text" class="form-control" style="width: 50px;" ng-model="cardDetails.CVV" required />
+                    </label>
+                </div>
+                <div>
+                    <label style="float:left; margin-right:10px">
+                        <span class="control-label">*Expiry Month:</span>
+                        <select class="form-control" ng-model="cardDetails.ExpiryMonth" required>
+                            <option>01</option>
+                            <option>02</option>
+                            <option>03</option>
+                            <option>04</option>
+                            <option>05</option>
+                            <option>06</option>
+                            <option>07</option>
+                            <option>08</option>
+                            <option>09</option>
+                            <option>10</option>
+                            <option>11</option>
+                            <option>12</option>
+                        </select>
+                    </label>
+                    <label>
+                        <span class="control-label">*Expiry Year:</span>
+                        <select class="form-control" ng-model="cardDetails.ExpiryYear" required>
+                            <option>2016</option>
+                            <option>2017</option>
+                            <option>2018</option>
+                            <option>2019</option>
+                            <option>2020</option>
+                            <option>2021</option>
+                            <option>2022</option>
+                            <option>2023</option>
+                            <option>2024</option>
+                            <option>2025</option>
+                        </select>
+                    </label>
+                </div>   
+                <label>
+                    <span class="control-label">*Address:</span>
+                    <input type="text" class="form-control" ng-model="cardDetails.Address" required />
+                </label>
+                <div>                    
+                    <label style="float:left; margin-right:10px">
+                        <span class="control-label">*City:</span>
+                        <input type="text" class="form-control" ng-model="cardDetails.City" required />
+                    </label>
+                    <label style="float:left; margin-right:10px">
+                        <span class="control-label">*State:</span>
+                        <input type="text" class="form-control" style="width:50px" ng-model="cardDetails.State" required />
+                    </label>
+                    <label>
+                        <span class="control-label">*Zip:</span>
+                        <input type="text" class="form-control" style="width:100px" ng-model="cardDetails.Zip" required />
+                    </label>
+                </div>             
+                
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-9" style="margin:30px; text-align:right; background-color:whitesmoke;">
+                    <input type="submit" class="btn btn-default" value="Submit" name="btnPay" ng-click="CreateAccount()" />
+                    <span style="color: red" ng-bind="paymentError"></span>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

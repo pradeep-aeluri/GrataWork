@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Cancel Subscription";
+}
+<div ng-app="grataWork">
+    <h4></h4>
+    <form name="rechargeForm" class="form-horizontal">
+        <div class="row" ng-controller="rechargeCtrl" ng-cloak>            
+            <h3>Are you sure you want to cancel the subscription?</h3>
+            <br />
+            <p>
+                If you confirm, your account will be inactive and will not be charged 
+                from the next billing cycle. 
+            </p>
+            <p>
+                You can come back and activate the subscription
+                at a later time.
+            </p>
+            <p>
+                <input type="submit" class="btn btn-default" value="Confirm" ng-click="CancelSubscription()" />
+            </p>
+
+        </div>
+    </form>
+</div>
