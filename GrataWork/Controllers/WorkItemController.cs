@@ -99,7 +99,7 @@ namespace GrataWork.Controllers
                     issue.SaveChanges();
 
                     user.JIRAEpicId = issue.Key.Value;
-
+                                        
                     if (user.StripePlanId == "small")
                         user.AccountBalance = 20;
 
